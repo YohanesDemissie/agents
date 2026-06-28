@@ -8,6 +8,8 @@ import gradio as gr
 
 
 load_dotenv(override=True)
+openai_api_key = os.environ.get("OPENAI_API_KEY")
+# openai = OpenAI(api_key=openai_api_key)
 
 def push(text):
     requests.post(
@@ -76,7 +78,7 @@ tools = [{"type": "function", "function": record_user_details_json},
 class Me:
 
     def __init__(self):
-        self.openai = OpenAI()
+        self.openai = OpenAI(api_key=openai_api_key)
         self.name = "Yohanes Demissie"
         reader = PdfReader("me/yohanes-demissie-linkedin.pdf")
         self.linkedin = ""
